@@ -5,8 +5,9 @@ import theme from "@rebass/preset";
 import { Box, Card, Image, Heading, Text, Flex } from "rebass";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ $borderWidth: string }>`
   padding: 8px;
+  border: ${x => x.$borderWidth} solid red;
 `;
 
 const DemoComponent = ({
@@ -18,7 +19,7 @@ const DemoComponent = ({
   title: string;
   description: string;
 }) => (
-  <Box width={256}>
+  <Box width={1}>
     <Card
       sx={{
         p: 1,
@@ -36,9 +37,9 @@ const DemoComponent = ({
 );
 
 const DemoPage = (props: { children: React.ReactNode }) => (
-  <Wrapper>
+  <Wrapper $borderWidth="2px">
     <Flex>
-      <Box>{props.children}</Box>
+      <Box width={1}>{props.children}</Box>
     </Flex>
   </Wrapper>
 );
